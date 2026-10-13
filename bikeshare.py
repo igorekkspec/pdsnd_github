@@ -66,7 +66,7 @@ def load_data(city, month, day):
 
     # extract month and day of week from Start Time to create new columns
     df['month'] = df['Start Time'].dt.month
-    df['day_of_week'] = df['Start Time'].dt.weekday_name
+    df['day_of_week'] = df['Start Time'].dt.day_name
 
     # filter by month if applicable
     if month != 'all':
@@ -197,9 +197,11 @@ def main():
         id_range=5
         while True:
             if id_start>0:
-                raw_prompt=input('\n Would you like to see another 5 raw lines from the dataset? Enter y or n \n')
+                init_prompt='\n Would you like to see another 5 raw lines from the dataset? Enter y or n \n'
+                raw_prompt=input(init_prompt)
             else:
-                raw_prompt=input('\n Would you like to see 5 raw lines from the dataset? Enter y or n \n')
+                continue_prompt='\n Would you like to see 5 raw lines from the dataset? Enter y or n \n'
+                raw_prompt=input(continue_prompt)
             if raw_prompt.lower()!='y':
                     break
             show_raw(df,id_start)

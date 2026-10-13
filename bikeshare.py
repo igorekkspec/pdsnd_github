@@ -177,6 +177,9 @@ def user_stats(df):
     print("\nThis took %s seconds." % (time.time() - start_time))
     print('-'*40)
 def show_raw(df,id_start=0,id_range=5):
+    '''
+    show raw data in batches of #id_range rows 
+    '''
     if id_start<df.index.size-id_range:
         print(df.iloc[id_start:id_start+id_range])
     elif id_start<df.index.size:
